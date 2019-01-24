@@ -32,6 +32,10 @@
             }
         },
         "models": {
+            "": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "data/questions.json"
+            },
             "i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
                 "settings": {
