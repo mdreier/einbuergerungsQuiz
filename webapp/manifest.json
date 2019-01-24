@@ -38,6 +38,39 @@
                     "bundleName": "de.martindreier.ebq.i18n.i18n"
                 }
             }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "de.martindreier.ebq.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "async": true
+            },
+            "routes": 
+            [
+                {
+                    "pattern": "",
+                    "name": "start",
+                    "target": "startPage"
+                },
+                {
+                    "pattern": "quiz/{seed}",
+                    "name": "play",
+                    "target": "quizPage"
+                }
+            ],
+            "targets": {
+                "startPage": {
+                    "viewId": "start",
+                    "viewName": "Start"
+                },
+                "quizPage": {
+                    "viewId": "quiz",
+                    "viewName": "Quiz"
+                }
+            }
         }
     }
 }
