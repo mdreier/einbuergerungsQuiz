@@ -1,6 +1,7 @@
 sap.ui.define([
-    "sap/ui/core/UIComponent"
-], function (UIComponent) {
+    "sap/ui/core/UIComponent",
+    "sap/ui/model/json/JSONModel"
+], function (UIComponent, JSONModel) {
     "use strict";
     return UIComponent.extend("de.martindreier.ebq.Component", {
 
@@ -14,6 +15,12 @@ sap.ui.define([
 
             //Initialize routing
             this.getRouter().initialize();
+
+            //App model
+            var oAppModel = new JSONModel({
+                appVersion: this.getMetadata().getManifestEntry("sap.app").applicationVersion.version
+            });
+            this.setModel(oAppModel, "app");
         }
     });
 });
