@@ -1,10 +1,13 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
-    "sap/ui/model/json/JSONModel",
-    "sap/base/strings/formatMessage"
- ], function (Controller, JSONModel, formatMessage) {
+    "de/martindreier/ebq/controller/BaseController",
+    "sap/ui/model/json/JSONModel"
+ ], function (BaseController, JSONModel) {
     "use strict";
-    return Controller.extend("de.martindreier.ebq.controller.Start", {
-        formatMessage: formatMessage
+    return BaseController.extend("de.martindreier.ebq.controller.Start", {
+        
+        onStartQuiz: function()
+        {
+            this.getRouter().navTo("play");
+        }
     });
  });
