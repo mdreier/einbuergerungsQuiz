@@ -1,7 +1,8 @@
 sap.ui.define([
     "sap/ui/core/UIComponent",
-    "sap/ui/model/json/JSONModel"
-], function (UIComponent, JSONModel) {
+    "sap/ui/model/json/JSONModel",
+    "de/martindreier/ebq/controller/Quiz"
+], function (UIComponent, JSONModel, Quiz) {
     "use strict";
     return UIComponent.extend("de.martindreier.ebq.Component", {
 
@@ -21,6 +22,15 @@ sap.ui.define([
                 appVersion: this.getMetadata().getManifestEntry("sap.app").applicationVersion.version
             });
             this.setModel(oAppModel, "app");
+        },
+
+        getQuiz: function()
+        {
+            if (!this._oQuiz) {
+                this._oQuiz = new Quiz();
+                this.setModel(this._oQuiz.getModel(), "quiz");
+            }
+            return this._oQuiz;
         }
     });
 });
