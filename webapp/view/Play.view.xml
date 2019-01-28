@@ -1,0 +1,27 @@
+<mvc:View
+		xmlns="sap.m"
+		xmlns:mvc="sap.ui.core.mvc"
+        controllerName="de.martindreier.ebq.controller.Play"
+		displayBlock="true">
+	<Page
+        title="{
+            parts: [
+                { path: 'i18n>questionPageTitle' },
+                { path: 'quiz>/questions/number' },
+                { path: 'quiz>/questions/count' }
+            ],
+            formatter: '.formatMessage'
+        }"
+        enableScrolling="false">
+        <content>
+            <VBox alignContent="Center" alignItems="Center" fitContainer="true">
+                <Text text="{question}" class="sapUiLargeMarginTopBottom" />
+                <VBox id="questionsSection" items="{answers}"  alignContent="Center" alignItems="Center">
+                    <items>
+                        <Button text="{text}" />
+                    </items>
+                </VBox>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

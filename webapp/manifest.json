@@ -60,7 +60,7 @@
                     "target": "startPage"
                 },
                 {
-                    "pattern": "quiz/{seed}",
+                    "pattern": "quiz",
                     "name": "play",
                     "target": "quizPage"
                 }
@@ -72,7 +72,7 @@
                 },
                 "quizPage": {
                     "viewId": "quiz",
-                    "viewName": "Quiz"
+                    "viewName": "Play"
                 }
             }
         }
