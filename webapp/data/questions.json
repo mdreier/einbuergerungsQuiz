@@ -5,126 +5,246 @@
             "number": 1,
             "question": "In Deutschland dürfen Menschen offen etwas gegen die Regierung sagen, weil ...",
             "answers": [
-                "hier Religionsfreiheit gilt.",
-                "die Menschen Steuern zahlen.",
-                "die Menschen das Wahlrecht haben.",
-                "hier Meinungsfreiheit gilt."
-            ],
-            "correct": 3
+                {
+                    "text": "hier Religionsfreiheit gilt.",
+                    "correct": false
+                },
+                {
+                    "text": "die Menschen Steuern zahlen.",
+                    "correct": false
+                },
+                {
+                    "text": "die Menschen das Wahlrecht haben.",
+                    "correct": false
+                },
+                {
+                    "text": "hier Meinungsfreiheit gilt.",
+                    "correct": true
+                }
+            ]
         },
         {
             "number": 2,
             "question": "In Deutschland können Eltern bis zum 14. Lebensjahr ihres Kindes entscheiden, ob es in der Schule am ...",
             "answers": [
-                "Geschichtsunterricht teilnimmt.",
-                "Religionsunterricht teilnimmt.",
-                "Politikunterricht teilnimmt.",
-                "Sprachunterricht teilnimmt."
-            ],
-            "correct": 1
+                {
+                    "text": "Geschichtsunterricht teilnimmt.",
+                    "correct": false
+                },
+                {
+                    "text": "Religionsunterricht teilnimmt.",
+                    "correct": true
+                },
+                {
+                    "text": "Politikunterricht teilnimmt.",
+                    "correct": false
+                },
+                {
+                    "text": "Sprachunterricht teilnimmt.",
+                    "correct": false
+                }
+            ]
         },
         {
             "number": 3,
             "question": "Deutschland ist ein Rechtsstaat. Was ist damit gemeint?",
             "answers": [
-                "Alle Einwohner / Einwohnerinnen und der Staat müssen sich an die Gesetze halten.",
-                "Der Staat muss sich nicht an die Gesetze halten.",
-                "Nur Deutsche müssen die Gesetze befolgen.",
-                "Die Gerichte machen die Gesetze."
-            ],
-            "correct": 0
+                {
+                    "text": "Alle Einwohner / Einwohnerinnen und der Staat müssen sich an die Gesetze halten.",
+                    "correct": true
+                },
+                {
+                    "text": "Der Staat muss sich nicht an die Gesetze halten.",
+                    "correct": false
+                },
+                {
+                    "text": "Nur Deutsche müssen die Gesetze befolgen.",
+                    "correct": false
+                },
+                {
+                    "text": "Die Gerichte machen die Gesetze.",
+                    "correct": false
+                }
+            ]
         },
         {
             "number": 4,
             "question": "Welches Recht gehört zu den Grundrechten in Deutschland?",
             "answers": [
-                "Waffenbesitz",
-                "Faustrecht",
-                "Meinungsfreiheit",
-                "Selbstjustiz"
-            ],
-            "correct": 2
+                {
+                    "text": "Waffenbesitz",
+                    "correct": false
+                },
+                {
+                    "text": "Faustrecht",
+                    "correct": false
+                },
+                {
+                    "text": "Meinungsfreiheit",
+                    "correct": true
+                },
+                {
+                    "text": "Selbstjustiz",
+                    "correct": false
+                }
+            ]
         },
         {
             "number": 5,
             "question": "Wahlen in Deutschland sind frei. Was bedeutet das?",
             "answers": [
-                "Man darf Geld annehmen, wenn man dafür einen bestimmten Kandidaten / eine bestimmte Kandidatin wählt.",
-                "Nur Personen, die noch nie im Gefängnis waren, dürfen wählen.",
-                "Der Wähler darf bei der Wahl weder beeinflusst noch zu einer bestimmten Stimmabgabe gezwungen werden und keine Nachteile durch die Wahl haben.",
-                "Alle wahlberechtigten Personen müssen wählen."
-            ],
-            "correct": 2
+                {
+                    "text": "Man darf Geld annehmen, wenn man dafür einen bestimmten Kandidaten / eine bestimmte Kandidatin wählt.",
+                    "correct": false
+                },
+                {
+                    "text": "Nur Personen, die noch nie im Gefängnis waren, dürfen wählen.",
+                    "correct": false
+                },
+                {
+                    "text": "Der Wähler darf bei der Wahl weder beeinflusst noch zu einer bestimmten Stimmabgabe gezwungen werden und keine Nachteile durch die Wahl haben.",
+                    "correct": true
+                },
+                {
+                    "text": "Alle wahlberechtigten Personen müssen wählen.",
+                    "correct": false
+                }
+            ]
         },
         {
             "number": 6,
             "question": "Wie heißt die deutsche Verfassung?",
             "answers": [
-                "Volksgesetz",
-                "Bundesgesetz",
-                "Deutsches Gesetz",
-                "Grundgesetz"
-            ],
-            "correct": 3
+                {
+                    "text": "Volksgesetz",
+                    "correct": false
+                },
+                {
+                    "text": "Bundesgesetz",
+                    "correct": false
+                },
+                {
+                    "text": "Deutsches Gesetz",
+                    "correct": false
+                },
+                {
+                    "text": "Grundgesetz",
+                    "correct": true
+                }
+            ]
         },
         {
             "number": 7,
             "question": "Welches Recht gehört zu den Grundrechten, die nach der deutschen Verfassung garantiert werden? Das Recht auf ...",
             "answers": [
-                "Glaubens- und Gewissensfreiheit.",
-                "Unterhaltung.",
-                "Arbeit.",
-                "Wohnung."
-            ],
-            "correct": 0
+                {
+                    "text": "Glaubens- und Gewissensfreiheit.",
+                    "correct": true
+                },
+                {
+                    "text": "Unterhaltung.",
+                    "correct": false
+                },
+                {
+                    "text": "Arbeit.",
+                    "correct": false
+                },
+                {
+                    "text": "Wohnung.",
+                    "correct": false
+                }
+            ]
         },
         {
             "number": 8,
             "question": "Was steht nicht im Grundgesetz von Deutschland?",
             "answers": [
-                "Die Würde des Menschen ist unantastbar.",
-                "Alle sollen gleich viel Geld haben.",
-                "Jeder Mensch darf seine Meinung sagen.",
-                "Alle sind vor dem Gesetz gleich."
-            ],
-            "correct": 1
+                {
+                    "text": "Die Würde des Menschen ist unantastbar.",
+                    "correct": false
+                },
+                {
+                    "text": "Alle sollen gleich viel Geld haben.",
+                    "correct": true
+                },
+                {
+                    "text": "Jeder Mensch darf seine Meinung sagen.",
+                    "correct": false
+                },
+                {
+                    "text": "Alle sind vor dem Gesetz gleich.",
+                    "correct": false
+                }
+            ]
         },
         {
             "number": 9,
             "question": "Welches Grundrecht gilt in Deutschland nur für Ausländer / Ausländerinnen? Das Grundrecht auf ...",
             "answers": [
-                "Schutz der Familie",
-                "Menschenwürde",
-                "Asyl",
-                "Meinungsfreiheit"
-            ],
-            "correct": 2
+                {
+                    "text": "Schutz der Familie",
+                    "correct": false
+                },
+                {
+                    "text": "Menschenwürde",
+                    "correct": false
+                },
+                {
+                    "text": "Asyl",
+                    "correct": true
+                },
+                {
+                    "text": "Meinungsfreiheit",
+                    "correct": false
+                }
+            ]
         },
         {
             "number": 10,
             "question": "Was ist mit dem deutschen Grundgesetz vereinbar?",
             "answers": [
-                "die Prügelstrafe",
-                "die Folter",
-                "die Todesstrafe",
-                "die Geldstrafe"
-            ],
-            "correct": 3
+                {
+                    "text": "die Prügelstrafe",
+                    "correct": false
+                },
+                {
+                    "text": "die Folter",
+                    "correct": false
+                },
+                {
+                    "text": "die Todesstrafe",
+                    "correct": false
+                },
+                {
+                    "text": "die Geldstrafe",
+                    "correct": true
+                }
+            ]
         }
     ],
-
     "bw": [
         {
             "number": 1,
             "question": "Welches Wappen gehört zum Land Baden-Württemberg?",
             "image": "bw1.png",
             "answers": [
-                "1",
-                "2",
-                "3",
-                "4"
-            ],
-            "correct": 0
+                {
+                    "text": "1",
+                    "correct": true
+                },
+                {
+                    "text": "2",
+                    "correct": false
+                },
+                {
+                    "text": "3",
+                    "correct": false
+                },
+                {
+                    "text": "4",
+                    "correct": false
+                }
+            ]
         }
     ]
 }
