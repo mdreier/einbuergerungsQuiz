@@ -18,7 +18,33 @@
                 <Text text="{question}" class="sapUiLargeMarginTopBottom" />
                 <VBox id="questionsSection" items="{answers}"  alignContent="Center" alignItems="Center">
                     <items>
-                        <Button text="{text}" />
+                        <Button text="{text}" press="onAnswer" enabled="{= !${view>/resultsActive} }" />
+                    </items>
+                </VBox>
+                <VBox id="answerSection" alignContent="Center" alignItems="Center" visible="{view>/resultsActive}">
+                    <items>
+                        <Panel 
+                            content="{
+                                path: 'answers',
+                                filters: {
+                                    path: 'correct',
+                                    operator: 'EQ',
+                                    value1: true
+                                }
+                            }"
+                            headerText="{i18n>result}"
+                        >
+                            <content>
+                                <Text text="{
+                                    parts: [
+                                        { path: 'i18n>correctAnswer' },
+                                        { path: 'text' }
+                                    ],
+                                    formatter: '.formatMessage'
+                                }"  />
+                            </content>
+                        </Panel>
+                        <Button text="{i18n>nextQuestion}" press="onNextQuestion" />
                     </items>
                 </VBox>
             </VBox>
