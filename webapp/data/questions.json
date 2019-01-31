@@ -246,5 +246,15 @@
                 }
             ]
         }
+    ],
+    "states": [
+        {
+            "key": "bw",
+            "name": "Baden-Württemberg"
+        },
+        {
+            "key": "de",
+            "name": "Nur Deutschland-Fragen"
+        }
     ]
 }

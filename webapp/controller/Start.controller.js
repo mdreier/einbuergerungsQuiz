@@ -14,7 +14,14 @@ sap.ui.define([
         _initQuiz: function()
         {
             let iGlobalCount = this.getView().getModel().getProperty("/global").length;
-            this.getComponent().getQuiz().init(iGlobalCount, 0);
+            let sStateKey = this.getView().byId("stateSelection").getSelectedItem().getKey();
+            if (sStateKey && sStateKey != "de")
+            {
+                let iStateCount = this.getView().getModel().getProperty("/" + sStateKey).length;
+                this.getComponent().getQuiz().init(iGlobalCount, iStateCount, sStateKey);
+            } else {
+                this.getComponent().getQuiz().init(iGlobalCount, 0);
+            }
         }
     });
  });

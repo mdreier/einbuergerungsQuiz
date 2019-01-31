@@ -1,5 +1,6 @@
 <mvc:View
 		xmlns="sap.m"
+        xmlns:core="sap.ui.core"
 		xmlns:mvc="sap.ui.core.mvc"
         controllerName="de.martindreier.ebq.controller.Start"
 		displayBlock="true">
@@ -14,7 +15,15 @@
                 justifyContent="SpaceAround"
             >
                 <Title text="{i18n>startPageHeader}" titleStyle="H1" />
-                <Button text="{i18n>startQuiz}" press="onStartQuiz" />
+                <VBox alignContent="Center" alignItems="Center">
+                    <Text text="{i18n>selectState}" />
+                    <Select id="stateSelection" items="{/states}">
+                        <items>
+                            <core:Item key="{key}" text="{name}" />
+                        </items>
+                    </Select>
+                    <Button text="{i18n>startQuiz}" press="onStartQuiz" />
+                </VBox>
                 <Text text="{
                     parts: [
                         { path: 'i18n>versionInfo' },
