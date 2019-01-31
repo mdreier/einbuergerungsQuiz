@@ -7,7 +7,14 @@ sap.ui.define([
         
         onStartQuiz: function()
         {
+            this._initQuiz();
             this.getRouter().navTo("play");
+        },
+
+        _initQuiz: function()
+        {
+            let iGlobalCount = this.getView().getModel().getProperty("/global").length;
+            this.getComponent().getQuiz().init(iGlobalCount, 0);
         }
     });
  });

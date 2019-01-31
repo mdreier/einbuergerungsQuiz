@@ -8,7 +8,7 @@ sap.ui.define([
         
         onInit: function() {
             this._quiz = this.getComponent().getQuiz();
-            this._quiz.getModel().attachPropertyChange(this._onQuestionUpdate, this);
+            this._quiz.attachQuestionChange(this._onQuestionUpdate, this);
             this.getRouter().getRoute("play").attachPatternMatched(this._onShowCurrentQuestion, this);
             
             let oModel = new JSONModel({
@@ -20,8 +20,8 @@ sap.ui.define([
         onAnswer: function(oEvent)
         {
             let oButton = oEvent.getSource();
-            let bCorrect = oButton.getBindingContext().getProperty("correct");
-            if (bCorrect)
+            this._bLastCorrect = oButton.getBindingContext().getProperty("correct");
+            if (this._bLastCorrect)
             {
                 oButton.setType(ButtonType.Accept);
             } else {
@@ -33,21 +33,17 @@ sap.ui.define([
         onNextQuestion: function()
         {
             this.getView().getModel("view").setProperty("/resultsActive", false);
+            this._quiz.nextQuestion(this._bLastCorrect);
             this._resetButtons();
             //TODO: Load next question
         },
 
         _onQuestionUpdate: function(oEvent)
         {
-            let sPropertyPath = oEvent.getParameter("path");
-            if (sPropertyPath === "/questions/current")
+            let oNextQuestion = oEvent.getParameter("nextQuestion");
+            if (oNextQuestion)
             {
-                let oValue = Number(oEvent.getParameter("value"));
-                if (!oValue) {
-                    //TODO: No quiz in progress, redirect to main page
-                } else {
-                    this._bindQuestion(oValue);
-                }
+                this._bindQuestion(oNextQuestion);
             }
         },
 

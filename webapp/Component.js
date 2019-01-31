@@ -27,8 +27,7 @@ sap.ui.define([
         getQuiz: function()
         {
             if (!this._oQuiz) {
-                this._oQuiz = new Quiz();
-                this.setModel(this._oQuiz.getModel(), "quiz");
+                this._oQuiz = new Quiz(this);
             }
             return this._oQuiz;
         }
