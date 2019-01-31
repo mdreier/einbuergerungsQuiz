@@ -1,8 +1,8 @@
 sap.ui.define([
     "de/martindreier/ebq/controller/BaseController",
     "sap/ui/model/json/JSONModel",
-    "sap/m/ButtonType"
- ], function (BaseController, JSONModel, ButtonType) {
+    "sap/ui/core/MessageType"
+ ], function (BaseController, JSONModel, MessageType) {
     "use strict";
     return BaseController.extend("de.martindreier.ebq.controller.Play", {
         
@@ -19,13 +19,15 @@ sap.ui.define([
 
         onAnswer: function(oEvent)
         {
-            let oButton = oEvent.getSource();
-            this._bLastCorrect = oButton.getBindingContext().getProperty("correct");
+            let oItem = oEvent.getSource();
+            this._bLastCorrect = oItem.getBindingContext().getProperty("correct");
             if (this._bLastCorrect)
             {
-                oButton.setType(ButtonType.Accept);
+                oItem.setIcon("sap-icon://accept");
+                oItem.setHighlight(MessageType.Success);
             } else {
-                oButton.setType(ButtonType.Reject);
+                oItem.setIcon("sap-icon://decline");
+                oItem.setHighlight(MessageType.Error);
             }
             this.getView().getModel("view").setProperty("/resultsActive", true);
         },
@@ -62,9 +64,10 @@ sap.ui.define([
 
         _resetButtons: function()
         {
-            for (let oButton of this.getView().byId("questionsSection").getItems())
+            for (let oItem of this.getView().byId("questions").getItems())
             {
-                oButton.setType(ButtonType.Default);
+                oItem.setIcon();
+                oItem.setHighlight(MessageType.None);
             }
         }
 

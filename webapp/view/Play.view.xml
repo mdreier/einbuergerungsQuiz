@@ -16,11 +16,17 @@
         <content>
             <VBox alignContent="Center" alignItems="Center" fitContainer="true">
                 <Text text="{question}" class="sapUiLargeMarginTopBottom" />
-                <VBox id="questionsSection" items="{answers}"  alignContent="Center" alignItems="Center">
+
+                <List id="questions" items="{answers}">
                     <items>
-                        <Button text="{text}" press="onAnswer" enabled="{= !${view>/resultsActive} }" />
+                        <ObjectListItem 
+                            type="{= ${view>/resultsActive} ? 'Inactive' : 'Active' }" 
+                            title="{text}" 
+                            press="onAnswer" 
+                            enabled="{= !${view>/resultsActive} }" />
                     </items>
-                </VBox>
+                </List>
+
                 <VBox id="answerSection" alignContent="Center" alignItems="Center" visible="{view>/resultsActive}">
                     <items>
                         <Panel 
@@ -32,16 +38,10 @@
                                     value1: true
                                 }
                             }"
-                            headerText="{i18n>result}"
+                            headerText="{i18n>result}:"
                         >
                             <content>
-                                <Text text="{
-                                    parts: [
-                                        { path: 'i18n>correctAnswer' },
-                                        { path: 'text' }
-                                    ],
-                                    formatter: '.formatMessage'
-                                }"  />
+                                <Text text="{text}"  />
                             </content>
                         </Panel>
                         <Button text="{i18n>nextQuestion}" press="onNextQuestion" />
