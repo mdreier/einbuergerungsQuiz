@@ -32,6 +32,7 @@
                     ],
                     formatter: '.formatMessage'
                 }" />
+                <Text text="{i18n>disclaimer}" />
             </VBox>
         </content>
     </Page>
