@@ -12,10 +12,12 @@
             ],
             formatter: '.formatMessage'
         }"
-        enableScrolling="false">
+    >
         <content>
-            <VBox alignContent="Center" alignItems="Center" fitContainer="true">
+            <VBox alignContent="Center" alignItems="Center" fitContainer="true" class="sapUiMediumMargin">
                 <Text text="{question}" class="sapUiLargeMarginTopBottom" />
+
+                <Image src="webapp/data/{image}" width="100%"/>
 
                 <List id="questions" items="{answers}">
                     <items>
@@ -23,7 +25,7 @@
                             type="{= ${view>/resultsActive} ? 'Inactive' : 'Active' }" 
                             title="{text}" 
                             press="onAnswer" 
-                            enabled="{= !${view>/resultsActive} }" />
+                        />
                     </items>
                 </List>
 
