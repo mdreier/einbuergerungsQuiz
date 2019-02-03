@@ -52,6 +52,10 @@ sap.ui.define([
 
         _onShowCurrentQuestion: function()
         {
+            if (this._quiz.getModel().getProperty("/ended"))
+            {
+                this.getRouter().navTo("results");
+            }
             let oQuestion = this._quiz.getModel().getProperty("/questions/current");
             this._bindQuestion(oQuestion);
         },

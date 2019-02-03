@@ -42,7 +42,8 @@ sap.ui.define([
                     correct: 0,
                     incorrect: 0,
                     passed: false
-                }
+                },
+                ended: false
             });
 
             if (oManagedObject && oManagedObject.setModel) {
@@ -153,6 +154,7 @@ sap.ui.define([
          * Process end of quiz.
          */
         _quizEnd: function() {
+            this._oModel.setProperty("/ended", true);
             this.fireEvent(EVENT_QUIZ_END, undefined, true, true);
         },
 
