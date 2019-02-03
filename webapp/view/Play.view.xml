@@ -15,7 +15,7 @@
     >
         <content>
             <VBox alignContent="Center" alignItems="Center" fitContainer="true" class="sapUiMediumMargin">
-                <Text text="{question}" class="sapUiLargeMarginTopBottom" />
+                <Title text="{question}" class="sapUiLargeMarginTopBottom" />
 
                 <Image src="webapp/data/{image}" width="100%"/>
 
@@ -29,7 +29,7 @@
                     </items>
                 </List>
 
-                <VBox id="answerSection" alignContent="Center" alignItems="Center" visible="{view>/resultsActive}">
+                <VBox id="answerSection" alignContent="Center" alignItems="Center" visible="{view>/resultsActive}" class="sapUiMediumMarginTopBottom">
                     <items>
                         <Panel 
                             content="{
