@@ -15,6 +15,10 @@ sap.ui.define([
 
         getRouter: function() {
             return UIComponent.getRouterFor(this);
+        },
+
+        getQuiz: function() {
+            return this.getComponent().getQuiz();
         }
 
     });

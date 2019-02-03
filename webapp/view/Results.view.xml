@@ -30,6 +30,10 @@
                     text="{= ${quiz>/results/passed} ? ${i18n>passed} : ${i18n>failed} }" 
                     state="{= ${quiz>/results/passed} ? 'Success' : 'Error' }" />
             </form:SimpleForm>
+
+            <HBox justifyContent="Center">
+                <Button text="{i18n>back}" press="onEndQuiz" />
+            </HBox>
         </content>
     </Page>
 </mvc:View>

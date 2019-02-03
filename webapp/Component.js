@@ -30,6 +30,11 @@ sap.ui.define([
                 this._oQuiz = new Quiz(this);
             }
             return this._oQuiz;
+        },
+
+        endQuiz: function()
+        {
+            delete this._oQuiz;
         }
     });
 });

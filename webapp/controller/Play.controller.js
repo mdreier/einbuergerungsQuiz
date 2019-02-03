@@ -7,9 +7,9 @@ sap.ui.define([
     return BaseController.extend("de.martindreier.ebq.controller.Play", {
         
         onInit: function() {
-            this._quiz = this.getComponent().getQuiz();
-            this._quiz.attachQuestionChange(this._onQuestionUpdate, this);
-            this._quiz.attachQuizEnd(this._onQuizEnd, this);
+            let oQuiz = this.getQuiz();
+            oQuiz.attachQuestionChange(this._onQuestionUpdate, this);
+            oQuiz.attachQuizEnd(this._onQuizEnd, this);
             this.getRouter().getRoute("play").attachPatternMatched(this._onShowCurrentQuestion, this);
             
             let oModel = new JSONModel({
@@ -36,7 +36,7 @@ sap.ui.define([
         onNextQuestion: function()
         {
             this.getView().getModel("view").setProperty("/resultsActive", false);
-            this._quiz.nextQuestion(this._bLastCorrect);
+            this.getQuiz().nextQuestion(this._bLastCorrect);
             this._resetButtons();
             //TODO: Load next question
         },
@@ -52,11 +52,11 @@ sap.ui.define([
 
         _onShowCurrentQuestion: function()
         {
-            if (this._quiz.getModel().getProperty("/ended"))
+            if (this.getQuiz().getModel().getProperty("/ended"))
             {
                 this.getRouter().navTo("results");
             }
-            let oQuestion = this._quiz.getModel().getProperty("/questions/current");
+            let oQuestion = this.getQuiz().getModel().getProperty("/questions/current");
             this._bindQuestion(oQuestion);
         },
 
