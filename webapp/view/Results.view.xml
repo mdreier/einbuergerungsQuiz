@@ -1,0 +1,35 @@
+<mvc:View
+		xmlns="sap.m"
+		xmlns:mvc="sap.ui.core.mvc"
+        xmlns:form="sap.ui.layout.form"
+        controllerName="de.martindreier.ebq.controller.Results"
+		displayBlock="true">
+	<Page
+        title="{i18n>resultsPageTitle}"
+        id="resultsPage"
+    >
+        <content>
+            <form:SimpleForm
+                id="resultsForm"
+                layout="ResponsiveGridLayout"
+                title="{i18n>resultsFormTitle}"
+
+                labelSpanM="4"
+            >
+                <Label id="questionCountLabel" text="{i18n>questionCount}" labelFor="questionCount" />
+                <Text id="questionCount" text="{quiz>/questions/count}" />
+                
+                <Label id="correctAnswerCountLabel" text="{i18n>correctAnswerCount}" labelFor="correctAnswerCount" />
+                <Text id="correctAnswerCount" text="{quiz>/results/correct}" />
+                <Label id="incorrectAnswerCountLabel" text="{i18n>incorrectAnswerCount}" labelFor="incorrectAnswerCount" />
+                <Text id="incorrectAnswerCount" text="{quiz>/results/incorrect}" />
+
+                <Label id="overallResultLabel" text="{i18n>overallResult}" />
+                <ObjectStatus 
+                    id="overallResultPassed" 
+                    text="{= ${quiz>/results/passed} ? ${i18n>passed} : ${i18n>failed} }" 
+                    state="{= ${quiz>/results/passed} ? 'Success' : 'Error' }" />
+            </form:SimpleForm>
+        </content>
+    </Page>
+</mvc:View>

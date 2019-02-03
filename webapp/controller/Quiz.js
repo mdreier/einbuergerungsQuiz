@@ -10,8 +10,15 @@ sap.ui.define([
         winCount: 5
     };
 
+    /**
+     * Event: Question was changed.
+     */
     const EVENT_QUESTION_CHANGE = "questionChange";
-
+    /**
+     * Event: Quiz has ended.
+     */
+    const EVENT_QUIZ_END = "quizEnd";
+    
     return EventProvider.extend("de.martindreier.ebq.controller.Quiz", {
         
         /**
@@ -30,6 +37,11 @@ sap.ui.define([
                         index: 0
                     },
                     selected: []
+                },
+                results: {
+                    correct: 0,
+                    incorrect: 0,
+                    passed: false
                 }
             });
 
@@ -46,12 +58,18 @@ sap.ui.define([
             return this._oModel;
         },
 
+        /**
+         * Initialize the quiz.
+         * @param {number} iGlobalQuestionsCount Number of global questions available in catalog
+         * @param {number} iStateQuestionsCount Number of state questions available catalog
+         * @param {string} sState Selected state, "de" for no state selection
+         */
         init: function(iGlobalQuestionsCount, iStateQuestionsCount, sState) {
             
             let aGlobalQuestions = this._pickQuestions("global", iGlobalQuestionsCount, mSettings.globalQuestionCount);
             let aStateQuestions = [];
 
-            if (typeof sState === "string" && sState.length === 2) {
+            if (typeof sState === "string" && sState.length === 2 && sState !== "de") {
                 aStateQuestions = this._pickQuestions(sState, iStateQuestionsCount, mSettings.stateQuestionCount);
             }
 
@@ -67,15 +85,18 @@ sap.ui.define([
          * @param {boolean} bLastCorrect 
          */
         nextQuestion: function(bLastCorrect) {
-            //TODO: Count correct answers
+            if (bLastCorrect !== undefined) {
+                this._recordAnswer(bLastCorrect);
+            }
             let iNextQuestion = this._oModel.getProperty("/questions/number");
-            let aQuestions = this._oModel.getProperty("/questions/selected");
-            let oNextQuestion = aQuestions[iNextQuestion]
-            this._oModel.setProperty("/questions/current", oNextQuestion);
-            this._oModel.setProperty("/questions/number", ++iNextQuestion);
-            this.fireEvent(EVENT_QUESTION_CHANGE, {
-                nextQuestion: oNextQuestion
-            }, true, true);
+            let iNumQuestions = this._oModel.getProperty("/questions/count");
+            if (iNextQuestion === iNumQuestions)
+            {
+                //End of quiz reached
+                this._quizEnd();
+            } else {
+                this._nextQuestion();
+            }
         },
 
         attachQuestionChange: function(oData, fnHandler, oListener) {
@@ -84,6 +105,14 @@ sap.ui.define([
 
         detachQuestionChange: function(fnHandler, oListener) {
             this.detachEvent(EVENT_QUESTION_CHANGE, fnHandler, oListener);
+        },
+
+        attachQuizEnd: function(oData, fnHandler, oListener) {
+            this.attachEvent(EVENT_QUIZ_END, oData, fnHandler, oListener);
+        },
+
+        detachQuizEnd: function(fnHandler, oListener) {
+            this.detachEvent(EVENT_QUIZ_END, fnHandler, oListener);
         },
 
         /**
@@ -117,6 +146,45 @@ sap.ui.define([
             {
                 let j = Math.floor(Math.random() * (i+1));
                 [aValues[i], aValues[j]] = [aValues[j], aValues[i]];
+            }
+        },
+
+        /**
+         * Process end of quiz.
+         */
+        _quizEnd: function() {
+            this.fireEvent(EVENT_QUIZ_END, undefined, true, true);
+        },
+
+        /**
+         * Switch to the next question.
+         */
+        _nextQuestion: function() {
+            let iNextQuestion = this._oModel.getProperty("/questions/number");
+            let aQuestions = this._oModel.getProperty("/questions/selected");
+            let oNextQuestion = aQuestions[iNextQuestion]
+            this._oModel.setProperty("/questions/current", oNextQuestion);
+            this._oModel.setProperty("/questions/number", ++iNextQuestion);
+            this.fireEvent(EVENT_QUESTION_CHANGE, {
+                nextQuestion: oNextQuestion
+            }, true, true);
+        },
+
+        /**
+         * Record the answer and calculate overall result.
+         * @param {boolean} bCorrectAnswer Answer to be recorded.
+         */
+        _recordAnswer: function(bCorrectAnswer) {
+            //Determine property path to counter
+            let sPropertyPath = bCorrectAnswer ? "/results/correct" : "/results/incorrect";
+            //Update counter
+            let iCount = this._oModel.getProperty(sPropertyPath);
+            this._oModel.setProperty(sPropertyPath, ++iCount);
+            //Check if test is passed, only required if last answer was correct as initial result is
+            // not passed and an incorrect answer cannot change this to a passed result.
+            if (bCorrectAnswer && iCount >= mSettings.winCount)
+            {
+                this._oModel.setProperty("/results/passed", true);
             }
         }
 

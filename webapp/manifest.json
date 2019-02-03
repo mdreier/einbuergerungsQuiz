@@ -63,6 +63,11 @@
                     "pattern": "quiz",
                     "name": "play",
                     "target": "quizPage"
+                },
+                {
+                    "pattern": "results",
+                    "name": "results",
+                    "target": "resultPage"
                 }
             ],
             "targets": {
@@ -73,6 +78,10 @@
                 "quizPage": {
                     "viewId": "quiz",
                     "viewName": "Play"
+                },
+                "resultPage": {
+                    "viewId": "results",
+                    "viewName": "Results"
                 }
             }
         }

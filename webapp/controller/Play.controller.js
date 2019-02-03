@@ -9,6 +9,7 @@ sap.ui.define([
         onInit: function() {
             this._quiz = this.getComponent().getQuiz();
             this._quiz.attachQuestionChange(this._onQuestionUpdate, this);
+            this._quiz.attachQuizEnd(this._onQuizEnd, this);
             this.getRouter().getRoute("play").attachPatternMatched(this._onShowCurrentQuestion, this);
             
             let oModel = new JSONModel({
@@ -69,6 +70,11 @@ sap.ui.define([
                 oItem.setIcon();
                 oItem.setHighlight(MessageType.None);
             }
+        },
+
+        _onQuizEnd: function()
+        {
+            this.getRouter().navTo("results");
         }
 
     });
