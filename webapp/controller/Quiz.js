@@ -5,9 +5,9 @@ sap.ui.define([
     "use strict";
 
     var mSettings = {
-        globalQuestionCount: 5,
-        stateQuestionCount: 2,
-        winCount: 5
+        globalQuestionCount: 30,
+        stateQuestionCount: 3,
+        winCount: 17
     };
 
     /**
