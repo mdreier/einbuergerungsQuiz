@@ -15,17 +15,20 @@
     >
         <content>
             <VBox alignContent="Center" alignItems="Center" fitContainer="true" class="sapUiMediumMargin">
-                <Title text="{question}" class="sapUiLargeMarginTopBottom" />
+                <Title text="{question}" class="sapUiLargeMarginTopBottom" wrapping="true" wrappingType="Hyphenated" />
 
                 <Image src="webapp/data/{image}" width="100%"/>
 
                 <List id="questions" items="{answers}">
                     <items>
-                        <ObjectListItem 
+                        <CustomListItem 
                             type="{= ${view>/resultsActive} ? 'Inactive' : 'Active' }" 
-                            title="{text}" 
                             press="onAnswer" 
-                        />
+                        >
+                            <content>
+                                <Text text="{text}" wrapping="true" wrappingType="Hyphenated" class="sapUiSmallMargin" />
+                            </content>
+                        </CustomListItem>
                     </items>
                 </List>
 

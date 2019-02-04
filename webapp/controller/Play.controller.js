@@ -24,10 +24,8 @@ sap.ui.define([
             this._bLastCorrect = oItem.getBindingContext().getProperty("correct");
             if (this._bLastCorrect)
             {
-                oItem.setIcon("sap-icon://accept");
                 oItem.setHighlight(MessageType.Success);
             } else {
-                oItem.setIcon("sap-icon://decline");
                 oItem.setHighlight(MessageType.Error);
             }
             this.getView().getModel("view").setProperty("/resultsActive", true);
@@ -71,7 +69,6 @@ sap.ui.define([
         {
             for (let oItem of this.getView().byId("questions").getItems())
             {
-                oItem.setIcon();
                 oItem.setHighlight(MessageType.None);
             }
         },
