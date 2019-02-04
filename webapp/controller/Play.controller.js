@@ -36,7 +36,6 @@ sap.ui.define([
             this.getView().getModel("view").setProperty("/resultsActive", false);
             this.getQuiz().nextQuestion(this._bLastCorrect);
             this._resetButtons();
-            //TODO: Load next question
         },
 
         _onQuestionUpdate: function(oEvent)
