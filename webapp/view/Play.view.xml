@@ -12,6 +12,7 @@
             ],
             formatter: '.formatMessage'
         }"
+        busy="{quiz>/ended}"
     >
         <content>
             <VBox alignContent="Center" alignItems="Center" fitContainer="true" class="sapUiMediumMargin">
