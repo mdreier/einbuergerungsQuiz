@@ -9,6 +9,20 @@ sap.ui.define([
         {
             this._initQuiz();
             this.getRouter().navTo("play");
+            this.byId("resumeQuizButton").setVisible(true);
+        },
+
+        onResumeQuiz: function()
+        {
+            if (this.getModel("quiz") !== undefined)
+            {
+                if (this.getModel("quiz").getProperty("/ended"))
+                {
+                    this.getRouter().navTo("results");
+                } else {
+                    this.getRouter().navTo("play");
+                }
+            }
         },
 
         _initQuiz: function()

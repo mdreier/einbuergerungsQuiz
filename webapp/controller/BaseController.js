@@ -19,6 +19,10 @@ sap.ui.define([
 
         getQuiz: function() {
             return this.getComponent().getQuiz();
+        },
+
+        getModel: function(sModelName) {
+            return this.getView().getModel(sModelName);
         }
 
     });

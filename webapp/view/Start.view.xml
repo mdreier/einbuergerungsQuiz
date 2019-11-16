@@ -23,6 +23,12 @@
                         </items>
                     </Select>
                     <Button text="{i18n>startQuiz}" press="onStartQuiz" />
+                    <Button 
+                        id="resumeQuizButton"
+                        text="{i18n>resumeQuiz}" 
+                        press="onResumeQuiz"
+                        visible="false"
+                    />
                 </VBox>
                 <Text text="{
                     parts: [
