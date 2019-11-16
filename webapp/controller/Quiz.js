@@ -1,13 +1,32 @@
 sap.ui.define([
     "sap/ui/base/EventProvider",
     "sap/ui/model/json/JSONModel",
- ], function (EventProvider, JSONModel) {
+    "sap/base/util/deepClone"
+ ], function (EventProvider, JSONModel, deepClone) {
     "use strict";
 
     var mSettings = {
         globalQuestionCount: 30,
         stateQuestionCount: 3,
         winCount: 17
+    };
+
+    var mInitialState = {
+        questions: {
+            count: 0,                       //Count of questions in this quiz
+            number: 0,                      //Current question number in this quiz
+            current: {                      //Index of the current question in the map of questions
+                set: "global",
+                index: 0
+            },
+            selected: []
+        },
+        results: {
+            correct: 0,
+            incorrect: 0,
+            passed: false
+        },
+        ended: false
     };
 
     /**
@@ -28,23 +47,7 @@ sap.ui.define([
         constructor: function(oManagedObject) {
             EventProvider.apply(this);
             
-            this._oModel = new JSONModel({
-                questions: {
-                    count: 0,                       //Count of questions in this quiz
-                    number: 0,                      //Current question number in this quiz
-                    current: {                      //Index of the current question in the map of questions
-                        set: "global",
-                        index: 0
-                    },
-                    selected: []
-                },
-                results: {
-                    correct: 0,
-                    incorrect: 0,
-                    passed: false
-                },
-                ended: false
-            });
+            this._oModel = new JSONModel();
 
             if (oManagedObject && oManagedObject.setModel) {
                 oManagedObject.setModel(this._oModel, "quiz");
@@ -66,18 +69,26 @@ sap.ui.define([
          * @param {string} sState Selected state, "de" for no state selection
          */
         init: function(iGlobalQuestionsCount, iStateQuestionsCount, sState) {
-            
+            //Set or reset model into initial state
+            this._oModel.setData(deepClone(mInitialState));
+
+            //Pick global questions
             let aGlobalQuestions = this._pickQuestions("global", iGlobalQuestionsCount, mSettings.globalQuestionCount);
             let aStateQuestions = [];
 
+            //Pick state questions
             if (typeof sState === "string" && sState.length === 2 && sState !== "de") {
                 aStateQuestions = this._pickQuestions(sState, iStateQuestionsCount, mSettings.stateQuestionCount);
             }
 
+            //Shuffle selected questions so that global and state questions
+            // are mixed
             let aQuestions = [...aGlobalQuestions, ...aStateQuestions];
             this._shuffle(aQuestions);
             this._oModel.setProperty("/questions/selected", aQuestions);
             this._oModel.setProperty("/questions/count", aQuestions.length);
+
+            //Set first question to get started
             this.nextQuestion();
         },
 

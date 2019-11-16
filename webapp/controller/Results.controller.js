@@ -8,7 +8,6 @@ sap.ui.define([
         
         onEndQuiz: function()
         {
-            this.getComponent().endQuiz();
             this.getRouter().navTo("start");
         }
 
